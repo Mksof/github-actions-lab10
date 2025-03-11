@@ -6,10 +6,10 @@ on:
 jobs:
   issues-job:
     runs-on: ubuntu-latest
+    env: #added
+      issue_title: '${{ github.event.issue.title }}' #added
     steps:
-      - uses: actions/checkout@v4.1.1
-      - env: #added
-          issue_title: '${{ github.event.issue.title }}' #added
+      - uses: actions/checkout@v4.1.1  
       - name: Test Title
         run: |
           if [[ "$issue_title" == *"bug"* ]]; then
